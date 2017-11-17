@@ -114,6 +114,35 @@ var SceneVue = new Vue({
       },
       getEnvThumbnail: function(environment) {
         return 'background-image: url(/models/environments/' + environment[0] + '.png)'
+      },
+      createApp: function() {
+        var key = firebase.database().ref().push().key;
+        var updates = {};
+        updates[key] = {"environment": "preset: none", "items": [{
+          "color" : "#7BC8A4",
+          "geometry" : "plane",
+          "height" : "7.1",
+          "id" : 0,
+          "position" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+          },
+          "rotation" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+          },
+          "scale" : {
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+          },
+          "width" : "9"
+        }
+      ]};
+
+        return firebase.database().ref().update(updates);
       }
     },
     created: function() {
