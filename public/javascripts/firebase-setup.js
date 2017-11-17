@@ -135,6 +135,7 @@ var SceneVue = new Vue({
       });
 
       window.camera = document.querySelector('[camera]').object3D
+      console.log(window.camera)
     }
 });
 
