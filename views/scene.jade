@@ -24,7 +24,8 @@ block content
               a-entity(v-bind:id="index", v-bind:obj-model="'obj: #' + index + '-obj; mtl: #' + index + '-mtl'", v-bind:scale="getScale(item)", v-bind:rotation='getRotation(item)', v-bind:position='getPosition(item)')
               //- a-entity(v-bind:id='index', v-bind:gltf-model='getModel(item)', v-bind:position='getPosition(item)', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)')
           a-entity(camera="active: true; userHeight: 1.6;",look-controls, wasd-controls)
-          a-entity#environment(v-bind:environment='items.environment')
+          if(!ar)
+            a-entity#environment(v-bind:environment='items.environment')
       if(edit)
         div.navbar.overlay-element
           a#logo(href='#')
@@ -133,4 +134,5 @@ block content
               li(v-on:click='setEnvironment("poison")')= "arches"
               li(v-on:click='setEnvironment("tron")')= "tron"
               li(v-on:click='setEnvironment("oasis")')= "oasis"
-      //- video#camera-stream(autoplay, muted, playsinline)
+  if(ar)
+    video#camera-stream(autoplay, muted, playsinline)
