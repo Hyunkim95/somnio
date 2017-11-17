@@ -178,6 +178,7 @@ var SceneVue = new Vue({
             self.currentItem = '';
             self.category = '';
             self.attribute = '';
+            $('.sidebar button').removeClass('selected');
           }
         });
       });
