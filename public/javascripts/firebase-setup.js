@@ -1,13 +1,12 @@
 window.onload = function() {
-console.log(window.appId)
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyCOxkcZqpTix24iQ1aGFi95EBr0My1Ley4",
-  authDomain: "vrex-c8cd0.firebaseapp.com",
-  databaseURL: "https://vrex-c8cd0.firebaseio.com",
-  projectId: "vrex-c8cd0",
-  storageBucket: "vrex-c8cd0.appspot.com",
-  messagingSenderId: "863289428138"
+  apiKey: "AIzaSyAu4uRr3QPR-g8XTYN3kiuu3Dxi1pKyTm4",
+  authDomain: "fb-hack-7e53c.firebaseapp.com",
+  databaseURL: "https://fb-hack-7e53c.firebaseio.com",
+  projectId: "fb-hack-7e53c",
+  storageBucket: "fb-hack-7e53c.appspot.com",
+  messagingSenderId: "127989580103"
 };
 firebase.initializeApp(config);
 
@@ -31,17 +30,22 @@ var SceneVue = new Vue({
         // console.log(this.items)
       },
       addObject: function(type) {
+        var position = {
+          x: (window.position["x"] - window.camera.getWorldDirection()['x'] * 4),
+          y: (window.position["y"] - window.camera.getWorldDirection()['y'] * 4),
+          z: (window.position["z"] - window.camera.getWorldDirection()['z'] * 4)
+        }
+
         this.items.push({
-            "position": "-1 3.25 -7",
+            "position": position,
             "color": "#EF2D5E",
-            "scale": "1 1 1",
+            "scale": {x: 1, y: 1, z: 1},
             "radius": "1.25",
             "geometry": type
         });
       },
       removeCurrentObject: function() {
         if(this.currentItem !== "" && this.currentItem !== null){
-          // console.log(this.currentItem);
           this.items.splice(this.currentItem, 1);
           this.currentItem = '';
         }
@@ -84,25 +88,22 @@ var SceneVue = new Vue({
         }
         return item.rotation.x + " " + item.rotation.y + " " + item.rotation.z;
       },
+      getModel: function(item) {
+        return '/models/' + item.model + '/scene.gltf';
+      }
     },
     created: function() {
       // Load data
       var self = this;
-      // $.ajax({
-      //     url: '/js/data.json',
-      //     method: 'GET',
-      //     success: function (data) {
-      //       console.log(data)
-      //         self.items = data;
-      //     },
-      //     error: function (error) {
-      //         console.log(error);
-      //     }
-      // });
+
+      AFRAME.registerComponent('listener', {
+        tick: function () {
+          window.position = this.el.getAttribute('position')
+        }
+      });
 
       database.on("value", function(snapshot) {
          var data = snapshot.val();
-         console.log(data)
          self.items = data
       }, function (error) {
          console.log("Error: " + error.code);
@@ -113,7 +114,6 @@ var SceneVue = new Vue({
       // Clicking on an object
       $('a-scene').on('raycaster-intersection', function(e) {
         var elIntersected = e.detail.els[0];
-        console.log(e.details)
         $('a-scene').off('click');
         $('a-scene').click(function() {
           self.currentItem = parseInt(elIntersected.id);
@@ -129,6 +129,8 @@ var SceneVue = new Vue({
           self.attribute = '';
         });
       });
+
+      window.camera = document.querySelector('[camera]').object3D
     }
 });
 

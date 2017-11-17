@@ -2,6 +2,7 @@ extends layout
 
 block content
   script.
+    position={}
     id="#{id}"
   body(style='margin: 0px; overflow: hidden')
     div#scene
@@ -18,11 +19,14 @@ block content
               a-cylinder(v-bind:id='index', v-bind:position='getPosition(item)', v-bind:color='item.color', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)', v-bind:width='item.width', v-bind:height='item.height', v-bind:depth='item.depth',v-bind:radius='item.radius')
             template(v-else-if='item.geometry === "plane"')
               a-plane(v-bind:id='index', v-bind:position='getPosition(item)', v-bind:color='item.color', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)', v-bind:width='item.width', v-bind:height='item.height', v-bind:depth='item.depth',v-bind:radius='item.radius')
-          a-entity(camera="active: true; userHeight: 1.6;",look-controls, wasd-controls)
+            template(v-else-if='item.geometry === "model"')
+              a-entity#camera(v-bind:id='index', v-bind:gltf-model='getModel(item)', v-bind:position='getPosition(item)', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)')
+          a-entity(camera="active: true; userHeight: 1.6;",look-controls, wasd-controls, listener)
           a-sky(color="grey")
       if(edit)
         div.sliders.overlay-element
           div.input-slider
+            button(v-on:click='addObject("box")') Add Object
             template(v-if='currentItem !== "" && currentItem !== null')
               input#width(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].width", v-if='attribute === "width"')
               input#height(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].height", v-if='attribute === "height"')
@@ -65,3 +69,6 @@ block content
               button#rotation(v-on:click='setCategory("rotation")')
               button#scale(v-on:click='setCategory("scale")')
       //- video#camera-stream(autoplay, muted, playsinline)
+
+script.
+  var camera

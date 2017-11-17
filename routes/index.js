@@ -7,7 +7,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 /* GET home page. */
-router.get('/edit/:id', function(req, res, next) {
+router.get('/:id/edit', function(req, res, next) {
   res.render('scene', { title: 'Express', id: req.params.id, edit: true });
 });
 
