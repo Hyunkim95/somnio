@@ -142,7 +142,10 @@ var SceneVue = new Vue({
         }
       ]};
 
-        return firebase.database().ref().update(updates);
+        firebase.database().ref().update(updates)
+          .then(function() {
+            window.location = "/" + key + "/edit"
+          })
       }
     },
     created: function() {
