@@ -141,6 +141,9 @@ button#delete[disabled] {
 button#environment {
   background: url("/img/environment.svg") no-repeat center;
 }
+button#furniture {
+  background: url("/img/furniture.svg") no-repeat center;
+}
 button#home {
   background: url("/img/home.svg") no-repeat center;
 }

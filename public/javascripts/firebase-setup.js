@@ -40,6 +40,12 @@ var SceneVue = new Vue({
           ["tron", "Tron"],
           ["volcano", "Volcano"],
           ["yavapai", "Yavapai"],
+        ],
+        furnitureArray: [
+          ["modern-convertible-sofa-with-pullout-bed", "Bed"],
+          ["wooden-coffe-table", "Wooden Coffee Table"],
+          ["lamp", "Lamp"],
+          ["ferrari-laferrari", "Ferrari"]
         ]
     },
     methods: {
@@ -47,19 +53,27 @@ var SceneVue = new Vue({
         database.set(this.items);
         // console.log(this.items)
       },
-      addObject: function(type) {
+      addObject: function(type, category, model) {
+        // var position = {
+        //   x: (window.position["x"] - window.camera.getWorldDirection()['x'] * 4),
+        //   y: (window.position["y"] - window.camera.getWorldDirection()['y'] * 4),
+        //   z: (window.position["z"] - window.camera.getWorldDirection()['z'] * 4)
+        // }
+
         var position = {
-          x: (window.position["x"] - window.camera.getWorldDirection()['x'] * 4),
-          y: (window.position["y"] - window.camera.getWorldDirection()['y'] * 4),
-          z: (window.position["z"] - window.camera.getWorldDirection()['z'] * 4)
+          x: 0,
+          y: 0,
+          z: 0
         }
 
-        this.items.push({
+        this.items.items.push({
             "position": position,
             "color": "#EF2D5E",
             "scale": {x: 1, y: 1, z: 1},
             "radius": "1.25",
-            "geometry": type
+            "geometry": type,
+            "model": model,
+            "category": category
         });
       },
       removeCurrentObject: function() {
@@ -115,6 +129,9 @@ var SceneVue = new Vue({
       },
       getEnvThumbnail: function(environment) {
         return 'background-image: url(/models/environments/' + environment[0] + '.png)'
+      },
+      getObjectThumbnail: function(item, category) {
+        return 'background-image: url(/models/categories/' + category + '/' + item[0] + '/thumbnail.jpg)'
       },
       createApp: function() {
         var key = firebase.database().ref().push().key;

@@ -19,8 +19,8 @@ block content
             template(v-else-if='item.geometry === "model"')
               //- a-entity(v-bind:id='index', v-bind:gltf-model='getModel(item)', v-bind:position='getPosition(item)', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)')
               a-assets
-                a-asset-item(v-bind:id="index + '-obj'" v-bind:src="getModel('objects', item, '.obj')")
-                a-asset-item(v-bind:id="index + '-mtl'" v-bind:src="getModel('objects', item, '.mtl')")
+                a-asset-item(v-bind:id="index + '-obj'" v-bind:src="getModel(item.category, item, '.obj')")
+                a-asset-item(v-bind:id="index + '-mtl'" v-bind:src="getModel(item.category, item, '.mtl')")
               a-entity(v-bind:id="index", v-bind:obj-model="'obj: #' + index + '-obj; mtl: #' + index + '-mtl'", v-bind:scale="getScale(item)", v-bind:rotation='getRotation(item)', v-bind:position='getPosition(item)')
               //- a-entity(v-bind:id='index', v-bind:gltf-model='getModel(item)', v-bind:position='getPosition(item)', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)')
           a-entity(camera="active: true; userHeight: 1.6;",look-controls, wasd-controls)
@@ -36,6 +36,7 @@ block content
           button#home Projects
           button#save(v-on:click='saveScene') Save
           button#environment(v-on:click='setCategory("environment")') Env
+          button#furniture(v-on:click='setCategory("furniture")') Objects
           button#delete(v-bind:disabled='currentItem === ""', v-on:click='removeCurrentObject()') Delete
           button#dimensions(v-on:click='setCategory("dimensions")', v-bind:disabled='currentItem === ""') Stretch
           button#position(v-on:click='setCategory("position")', v-bind:disabled='currentItem === ""') Move
@@ -75,6 +76,9 @@ block content
               div.rows(v-else-if='category === "environment"')
                 template(v-for='(environment, index) in environmentArray')
                   div.items(v-bind:style="getEnvThumbnail(environment)", v-on:click='setEnvironment(environment[0])')
+              div.rows(v-else-if='category === "furniture"')
+                template(v-for='(furniture, index) in furnitureArray')
+                  div.items(v-bind:style="getObjectThumbnail(furniture, 'furniture')", v-on:click='addObject("model" ,"furniture", furniture[0])')
                   
         div.sliders.overlay-element.mobile
           div.input-slider

@@ -1,0 +1,32 @@
+# Blender MTL File: 'None'
+# Material Count: 3
+
+newmtl Body
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.658824 0.658824 0.658824
+Ks 0.010980 0.010980 0.010980
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump fabric_v1.png
+map_Kd fabric_v1.png
+
+newmtl Metal
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.004392 0.004392 0.004392
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd b_metal-texture.jpg
+
+newmtl Plastic
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.012941 0.012941 0.012941
+Ni 1.000000
+d 1.000000
+illum 2
