@@ -23,7 +23,8 @@ var SceneVue = new Vue({
         items: [],
         currentItem: '',
         category: '',
-        attribute: ''
+        attribute: '',
+        environment: ''
     },
     methods: {
       saveScene: function() {
@@ -84,6 +85,9 @@ var SceneVue = new Vue({
         }
         return item.rotation.x + " " + item.rotation.y + " " + item.rotation.z;
       },
+     setEnvironment: function(environment) {
+       this.environment = 'preset:' + environment
+     }
     },
     created: function() {
       // Load data
