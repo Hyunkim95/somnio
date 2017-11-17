@@ -34,8 +34,8 @@ block content
           button#position(v-on:click='setCategory("position")', v-bind:disabled='currentItem === ""') Move
           button#rotation(v-on:click='setCategory("rotation")', v-bind:disabled='currentItem === ""') Rotate
           button#environment(v-on:click='setCategory("environment")') Env
-          div#attribute-box(v-if='!!category && currentItem !== ""', v-cloak)
-            div(v-if='category === "position"')
+          div#attribute-box(v-if='!!category', v-cloak)
+            div(v-if='category === "position" && currentItem !== ""')
               label(for='position-x') X axis
               span {{ items.items[currentItem].position.x }}
               input#position-x(type="range",min="-25",max="25",step="0.1", v-model.number="items.items[currentItem].position.x")
@@ -45,7 +45,7 @@ block content
               label(for='position-x') Z axis
               span {{ items.items[currentItem].position.z }}
               input#position-z(type="range",min="-25",max="25",step="0.1", v-model.number="items.items[currentItem].position.z")
-            div(v-if='category === "rotation"')
+            div(v-else-if='category === "rotation" && currentItem !== ""')
               label(for='rotation-x') X axis
               span {{ items.items[currentItem].rotation.x }}°
               input#rotation-x(type="range",min="-360",max="360",step="1", v-model.number="items.items[currentItem].rotation.x")
@@ -55,7 +55,7 @@ block content
               label(for='rotation-x') Z axis
               span {{ items.items[currentItem].rotation.z }}°
               input#rotation-z(type="range",min="-360",max="360",step="1", v-model.number="items.items[currentItem].rotation.z")
-            div(v-if='category === "dimensions"')
+            div(v-else-if='category === "dimensions" && currentItem !== ""')
               label(for='scale-x') X axis
               span {{ items.items[currentItem].scale.x }}
               input#scale-x(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].scale.x")
@@ -65,8 +65,7 @@ block content
               label(for='scale-z') Z axis
               span {{ items.items[currentItem].scale.z }}
               input#scale-z(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].scale.z")
-          div#attribute-box(v-if='!!category')
-            div.rows(v-if='category === "environment"')
+            div.rows(v-else-if='category === "environment"')
               template(v-for='(environment, index) in environmentArray')
                 div.items(v-bind:style="getEnvThumbnail(environment)", v-on:click='setEnvironment(environment[0])')
                   
