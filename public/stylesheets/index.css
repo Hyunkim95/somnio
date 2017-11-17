@@ -196,7 +196,18 @@ button.selected {
   position: absolute;
   top: 0;
   left: 90px;
+  padding: 20px;
 }
+
+.sidebar #attribute-box label, 
+.sidebar #attribute-box span{
+  color: white;
+}
+
+.sidebar #attribute-box span {
+  float: right;
+}
+
 .navbar {
   position: absolute;
   top: 0;

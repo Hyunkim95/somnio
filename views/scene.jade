@@ -28,26 +28,43 @@ block content
               div#logo-title Somnio
         div.sidebar.overlay-element.desktop
           button#home Projects
-          button#save Save
-          button#delete(v-bind:disabled='currentItem === ""') Delete
+          button#save(v-on:click='saveScene') Save
+          button#delete(v-bind:disabled='currentItem === ""', v-on:click='removeCurrentObject()') Delete
           button#dimensions(v-on:click='setCategory("dimensions")', v-bind:disabled='currentItem === ""') Stretch
           button#position(v-on:click='setCategory("position")', v-bind:disabled='currentItem === ""') Move
           button#rotation(v-on:click='setCategory("rotation")', v-bind:disabled='currentItem === ""') Rotate
           div#attribute-box(v-if='category !== "" && category !== null && currentItem !== ""')
-            input#width(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].width")
-            input#height(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].height")
-            input#depth(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].depth")
-            input#radius(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].radius")
-            input#position-x(type="range",min="-25",max="25",step="0.1", v-model.number="items.items[currentItem].position.x", v-if='attribute === "position-x"')
-            input#position-y(type="range",min="-25",max="25",step="0.1", v-model.number="items.items[currentItem].position.y", v-if='attribute === "position-y"')
-            input#position-z(type="range",min="-25",max="25",step="0.1", v-model.number="items.items[currentItem].position.z", v-if='attribute === "position-z"')
-            input#rotation-x(type="range",min="-360",max="360",step="1", v-model.number="items.items[currentItem].rotation.x", v-if='attribute === "rotation-x"')
-            input#rotation-y(type="range",min="-360",max="360",step="1", v-model.number="items.items[currentItem].rotation.y", v-if='attribute === "rotation-y"')
-            input#rotation-z(type="range",min="-360",max="360",step="1", v-model.number="items.items[currentItem].rotation.z", v-if='attribute === "rotation-z"')
-            input#scale-x(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].scale.x", v-if='attribute === "scale-x"')
-            input#scale-y(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].scale.y", v-if='attribute === "scale-y"')
-            input#scale-z(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].scale.z", v-if='attribute === "scale-z"')
-        div.sliders.overlay-element
+            div(v-if='category === "position"')
+              label(for='position-x') X axis
+              span {{ items[currentItem].position.x }}
+              input#position-x(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.x")
+              label(for='position-x') Y axis
+              span {{ items[currentItem].position.y }}
+              input#position-y(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.y")
+              label(for='position-x') Z axis
+              span {{ items[currentItem].position.z }}
+              input#position-z(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.z")
+            div(v-if='category === "rotation"')
+              label(for='rotation-x') X axis
+              span {{ items[currentItem].rotation.x }}°
+              input#rotation-x(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.x")
+              label(for='rotation-x') Y axis
+              span {{ items[currentItem].rotation.y }}°
+              input#rotation-y(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.y")
+              label(for='rotation-x') Z axis
+              span {{ items[currentItem].rotation.z }}°
+              input#rotation-z(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.z")
+            div(v-if='category === "dimensions"')
+              label(for='scale-x') X axis
+              span {{ items[currentItem].scale.x }}
+              input#scale-x(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.x")
+              label(for='scale-y') Y axis
+              span {{ items[currentItem].scale.y }}
+              input#scale-y(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.y")
+              label(for='scale-z') Z axis
+              span {{ items[currentItem].scale.z }}
+              input#scale-z(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.z")
+        div.sliders.overlay-element.mobile
           div.input-slider
             template(v-if='currentItem !== "" && currentItem !== null')
               input#width(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].width", v-if='attribute === "width"')

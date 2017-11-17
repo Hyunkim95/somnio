@@ -107,7 +107,7 @@ var SceneVue = new Vue({
 
       database.on("value", function(snapshot) {
          var data = snapshot.val();
-         self.items = data
+         self.items = data.items
       }, function (error) {
          console.log("Error: " + error.code);
       });
@@ -132,11 +132,18 @@ var SceneVue = new Vue({
           self.currentItem = '';
           self.category = '';
           self.attribute = '';
+          $('.sidebar button').removeClass('selected');
         });
       });
 
+      // Highlight button on click
+      $('.sidebar button').click(function() {
+        $(this).siblings().removeClass('selected');
+        $(this).addClass('selected');
+      });
+
       window.camera = document.querySelector('[camera]').object3D
-      console.log(window.camera)
+      // console.log(window.camera)
     }
 });
 
