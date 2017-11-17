@@ -169,6 +169,7 @@ var SceneVue = new Vue({
       var self = this;
       // Clicking on an object
       $('a-scene').on('raycaster-intersection', function(e) {
+        document.querySelector('[raycaster]').components.raycaster.refreshObjects();
         var elIntersected = e.detail.els[0];
         $('a-scene').off('click');
         $('a-scene').click(function() {
