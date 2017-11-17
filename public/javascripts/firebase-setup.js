@@ -64,7 +64,8 @@ var SceneVue = new Vue({
           ["lamp", "Lamp"],
           ["ferrari-laferrari", "Ferrari"],
           ["nissan-gt-r-nismo", "Nissan GT-R"],
-          ["lamborghini-aventador-irridescent-paint", "Laborghini"]
+          ["lamborghini-aventador-irridescent-paint", "Laborghini"],
+          ["sonjen-daimyo", "Songen Daimyo"]
         ]
     },
     methods: {
