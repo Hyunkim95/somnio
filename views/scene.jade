@@ -124,19 +124,5 @@ block content
               button#position(v-on:click='setCategory("position")')
               button#rotation(v-on:click='setCategory("rotation")')
               button#scale(v-on:click='setCategory("scale")')
-          div
-            ul(style='color:white')
-              li(v-on:click='setEnvironment("forest")') "forest"
-              li(v-on:click='setEnvironment("default")')= "default"
-              li(v-on:click='setEnvironment("contact")')= "contact"
-              li(v-on:click='setEnvironment("egypt")')= "egypt"
-              li(v-on:click='setEnvironment("checkerboard")')= "checkerboard"
-              li(v-on:click='setEnvironment("japan")')= "japan"
-              li(v-on:click='setEnvironment("goaland")')= "goaland"
-              li(v-on:click='setEnvironment("goldmine")')= "goldmine"
-              li(v-on:click='setEnvironment("threetowers")')= "three towers"
-              li(v-on:click='setEnvironment("poison")')= "arches"
-              li(v-on:click='setEnvironment("tron")')= "tron"
-              li(v-on:click='setEnvironment("oasis")')= "oasis"
   if(ar)
     video#camera-stream(autoplay, muted, playsinline)
