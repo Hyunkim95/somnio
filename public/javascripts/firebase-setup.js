@@ -62,7 +62,9 @@ var SceneVue = new Vue({
           ["modern-convertible-sofa-with-pullout-bed", "Bed"],
           ["wooden-coffe-table", "Wooden Coffee Table"],
           ["lamp", "Lamp"],
-          ["ferrari-laferrari", "Ferrari"]
+          ["ferrari-laferrari", "Ferrari"],
+          ["nissan-gt-r-nismo", "Nissan GT-R"],
+          ["lamborghini-aventador-irridescent-paint", "Laborghini"]
         ]
     },
     methods: {
