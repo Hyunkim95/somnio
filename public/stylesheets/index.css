@@ -66,17 +66,6 @@ body {
   height: 100%;
   object-fit: cover;
 }
-#dial {
-  width: 100px;
-  height: 100px;
-  background-color: #000;
-  bottom: 0;
-  border-radius: 50px;
-  left: calc(50% - 50px);
-  opacity: 0.4;
-  position: absolute;
-  z-index: 2;
-}
 .overlay-element {
   z-index: 2;
 }
@@ -96,36 +85,123 @@ body {
 button {
   text-transform: uppercase;
   padding: 30px;
+  padding-bottom: 10px;
+  padding-top: 45px;
   background: none;
+  background-size: 40px 40px !important;
+  background-position: center 8px !important;
   border: none;
-  -webkit-filter: invert(100%);
-}
-button:hover {
-  background-color: rgba(250,250,250,0.5) !important;
+  border-radius: 0;
+  outline: none;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
 }
 button#dimensions {
-  background: url("/img/cube.svg") no-repeat center 7px;
+  background: url("/img/cube.svg") no-repeat center;
+}
+button#dimensions[disabled] {
+  background: url("/img/cube-disabled.svg") no-repeat center;
 }
 button#position {
-  background: url("/img/position.svg") no-repeat center 8px;
-  background-size: 55px 55px;
+  background: url("/img/position.svg") no-repeat center;
+}
+button#position[disabled] {
+  background: url("/img/position-disabled.svg") no-repeat center;
 }
 button#rotation {
-  background: url("/img/rotate.svg") no-repeat center 10px;
-  background-size: 50px 50px;
+  background: url("/img/rotate.svg") no-repeat center;
+}
+button#rotation[disabled] {
+  background: url("/img/rotate-disabled.svg") no-repeat center;
 }
 button#scale {
-  background: url("/img/scale.svg") no-repeat center 9px;
-  background-size: 43px;
+  background: url("/img/scale.svg") no-repeat center;
+}
+button#scale[disabled] {
+  background: url("/img/scale-disabled.svg") no-repeat center;
 }
 button#save {
-  background: url("/img/save.svg") no-repeat center 7px;
+  background: url("/img/save.svg") no-repeat center;
 }
 button#delete {
-  background: url("/img/delete.svg") no-repeat center 7px;
+  background: url("/img/delete.svg") no-repeat center;
+}
+button#delete[disabled] {
+  background: url("/img/delete-disabled.svg") no-repeat center;
+}
+button#home {
+  background: url("/img/home.svg") no-repeat center;
+}
+button#home[disabled] {
+  background: url("/img/home-disabled.svg") no-repeat center;
+}
+button[disabled] {
+  color: rgba(255,255,255,0.5);
+}
+button[disabled]:hover {
+  background-color: none !important;
+}
+button:hover,
+button.selected {
+  background-color: rgba(10,10,10,0.5) !important;
+}
+#logo div {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+}
+#logo #logo-icon {
+  background: url("/img/logo.svg") no-repeat center 4px;
+  padding: 30px;
+}
+#logo #logo-title {
+  padding: 20px 0;
+  float: right;
+  padding-right: 20px;
 }
 .attributes button {
   padding: 10px 30px;
+}
+@media screen and (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+}
+.sidebar {
+  background: rgba(16,79,85,0.8);
+  position: absolute;
+  top: 63px;
+  height: calc(100vh - 63px);
+}
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+.sidebar button {
+  display: block;
+  margin: 0 auto;
+  width: 90px;
+  padding-right: 15px;
+  padding-left: 15px;
+  transition: 0.5s;
+}
+.sidebar #attribute-box {
+  width: 200px;
+  height: calc(100vh - 63px);
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 90px;
+}
+.navbar {
+  position: absolute;
+  top: 0;
+  background: #104f55;
+  width: 100vw;
 }
 input[type=range] {
   -webkit-appearance: none;

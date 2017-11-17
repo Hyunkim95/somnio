@@ -2,7 +2,6 @@ extends layout
 
 block content
   script.
-    position={}
     id="#{id}"
   body(style='margin: 0px; overflow: hidden')
     div#scene
@@ -20,13 +19,38 @@ block content
             template(v-else-if='item.geometry === "plane" && environment === "none"')
               a-plane(v-bind:id='index', v-bind:position='getPosition(item)', v-bind:color='item.color', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)', v-bind:width='item.width', v-bind:height='item.height', v-bind:depth='item.depth',v-bind:radius='item.radius')
             template(v-else-if='item.geometry === "model"')
-              a-entity#camera(v-bind:id='index', v-bind:gltf-model='getModel(item)', v-bind:position='getPosition(item)', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)')
-          a-entity(camera="active: true; userHeight: 1.6;",look-controls, wasd-controls, listener)
-          a-entity(v-bind:environment='environment')
+              a-entity(v-bind:id='index', v-bind:gltf-model='getModel(item)', v-bind:position='getPosition(item)', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)')
+          a-entity(camera="active: true; userHeight: 1.6;",look-controls, wasd-controls)
+          a-entity#environment(v-bind:environment='environment')
       if(edit)
+        div.navbar.overlay-element
+          a#logo(href='#')
+            div
+              div#logo-icon
+              div#logo-title Somnio
+        div.sidebar.overlay-element.desktop
+          button#home Projects
+          button#save Save
+          button#delete(v-bind:disabled='currentItem === ""') Delete
+          button#dimensions(v-on:click='setCategory("dimensions")', v-bind:disabled='currentItem === ""') Stretch
+          button#position(v-on:click='setCategory("position")', v-bind:disabled='currentItem === ""') Move
+          button#rotation(v-on:click='setCategory("rotation")', v-bind:disabled='currentItem === ""') Rotate
+          div#attribute-box(v-if='category !== "" && category !== null && currentItem !== ""')
+            input#width(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].width")
+            input#height(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].height")
+            input#depth(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].depth")
+            input#radius(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].radius")
+            input#position-x(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.x", v-if='attribute === "position-x"')
+            input#position-y(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.y", v-if='attribute === "position-y"')
+            input#position-z(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.z", v-if='attribute === "position-z"')
+            input#rotation-x(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.x", v-if='attribute === "rotation-x"')
+            input#rotation-y(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.y", v-if='attribute === "rotation-y"')
+            input#rotation-z(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.z", v-if='attribute === "rotation-z"')
+            input#scale-x(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.x", v-if='attribute === "scale-x"')
+            input#scale-y(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.y", v-if='attribute === "scale-y"')
+            input#scale-z(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.z", v-if='attribute === "scale-z"')
         div.sliders.overlay-element
           div.input-slider
-            button(v-on:click='addObject("box")') Add Object
             template(v-if='currentItem !== "" && currentItem !== null')
               input#width(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].width", v-if='attribute === "width"')
               input#height(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].height", v-if='attribute === "height"')
@@ -83,6 +107,3 @@ block content
               li(v-on:click='setEnvironment("tron")')= "tron"
               li(v-on:click='setEnvironment("oasis")')= "oasis"
       //- video#camera-stream(autoplay, muted, playsinline)
-
-script.
-  var camera
