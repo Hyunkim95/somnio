@@ -19,11 +19,10 @@ var database = firebase.database().ref(appName);
 var SceneVue = new Vue({
     el: '#scene',
     data: {
-        items: [],
+        items: {items: [], environment: ''},
         currentItem: '',
         category: '',
-        attribute: '',
-        environment: ''
+        attribute: ''
     },
     methods: {
       saveScene: function() {
@@ -93,7 +92,7 @@ var SceneVue = new Vue({
         return '/models/' + item.model + '/scene.gltf';
       },
       setEnvironment: function(environment) {
-       this.environment = 'preset:' + environment
+       this.items.environment = 'preset:' + environment
       }
     },
     created: function() {
