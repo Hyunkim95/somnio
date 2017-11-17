@@ -14,7 +14,7 @@ firebase.initializeApp(config);
   null;
 
 if(window.ar == 'true'){
- navigator.mediaDevices.getUserMedia({ video : { facingMode: "environment" }})
+ navigator.mediaDevices.getUserMedia({ video : { facingMode: {exact: "environment"} }})
   .then(function(stream) {
    var video = document.querySelector('#camera-stream');
    video.srcObject = stream;
