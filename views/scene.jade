@@ -23,7 +23,6 @@ block content
               a-entity#camera(v-bind:id='index', v-bind:gltf-model='getModel(item)', v-bind:position='getPosition(item)', v-bind:scale='getScale(item)', v-bind:rotation='getRotation(item)')
           a-entity(camera="active: true; userHeight: 1.6;",look-controls, wasd-controls, listener)
           a-entity(v-bind:environment='environment')
-          a-entity#car(gltf-model='/models/1972_datsun_240k_gt/scene.gltf', position='-3 0.5 -3', rotation='0 45 0', scale='0.001 0.001 0.001')
       if(edit)
         div.sliders.overlay-element
           div.input-slider
