@@ -58,8 +58,9 @@ body {
   width: 100% !important;
 }
 .edit .a-enter-vr.embedded {
-  display: none;
+  /*display: none;*/
 }
+
 #camera-stream {
   position: absolute;
   width: 100%;
@@ -180,7 +181,7 @@ button.selected {
   }
 }
 .sidebar {
-  background: rgba(16,79,85,0.8);
+  background: rgba(91,91,91,0.8);
   position: absolute;
   top: 63px;
   height: calc(100vh - 63px);
@@ -201,7 +202,7 @@ button.selected {
 .sidebar #attribute-box {
   width: 200px;
   height: calc(100vh - 63px);
-  background: #000;
+  background: rgba(47,47,47,0.852);
   position: absolute;
   top: 0;
   left: 90px;
@@ -308,4 +309,14 @@ input[type=range]::-ms-thumb {
   background: #fff;
   cursor: pointer;
   height: 2.4px;
+}
+
+.a-enter-vr-button {
+  padding-top: 45px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+[v-cloak] {
+  display: none;
 }

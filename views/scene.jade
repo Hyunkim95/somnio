@@ -34,7 +34,7 @@ block content
           button#position(v-on:click='setCategory("position")', v-bind:disabled='currentItem === ""') Move
           button#rotation(v-on:click='setCategory("rotation")', v-bind:disabled='currentItem === ""') Rotate
           button#environment(v-on:click='setCategory("environment")') Env
-          div#attribute-box(v-if='!!category && currentItem !== ""')
+          div#attribute-box(v-if='!!category && currentItem !== ""', v-cloak)
             div(v-if='category === "position"')
               label(for='position-x') X axis
               span {{ items.items[currentItem].position.x }}
