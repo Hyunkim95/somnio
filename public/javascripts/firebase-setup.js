@@ -201,6 +201,18 @@ var SceneVue = new Vue({
         $(this).addClass('selected');
       });
 
+     var video = document.querySelector('#camera-stream');
+     navigator.mediaDevices.getUserMedia({ video : { facingMode: "environment" }})
+      .then(function(stream) {
+       video.srcObject = stream;
+       video.onloadedmetadata = function(e) {
+        video.play();
+       };
+      })
+      .catch(function(err) {
+       console.log('The following error occurred when trying to use getUserMedia: ' + err);
+      });
+
       window.camera = document.querySelector('[camera]').object3D
       // console.log(window.camera)
     }
