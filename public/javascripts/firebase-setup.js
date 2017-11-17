@@ -12,20 +12,35 @@ firebase.initializeApp(config);
 
  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia    ||
   null;
+ 
+// if(window.ar == 'true'){
+//  navigator.getUserMedia({ video: { facingMode: { exact: "environment" } } }
+//   .then(function(stream) {
+//    var video = document.querySelector('#camera-stream');
+//    video.srcObject = stream;
+//    video.onloadedmetadata = function(e) {
+//     video.play();
+//    };
+//   })
+//   .catch(function(err) {
+//    console.log('The following error occurred when trying to use getUserMedia: ' + err);
+//   });
+// }
 
-if(window.ar == 'true'){
- navigator.mediaDevices.getUserMedia({ video : { facingMode: {exact: "environment"} }})
-  .then(function(stream) {
-   var video = document.querySelector('#camera-stream');
-   video.srcObject = stream;
-   video.onloadedmetadata = function(e) {
-    video.play();
-   };
-  })
-  .catch(function(err) {
-   console.log('The following error occurred when trying to use getUserMedia: ' + err);
-  });
-}
+ if(window.ar == 'true') {
+   navigator.getUserMedia({ video: { facingMode: { exact: "environment" || "user" } } },
+      function(stream) {
+        var video = document.querySelector('video')
+        video.srcObject = stream;
+        video.onloadedmetadata = function(e) {
+          video.play()
+        }
+      },
+      function(err){
+        console.log(err)
+      }
+    )
+ }
 
 // App name
 var appName = window.id;
