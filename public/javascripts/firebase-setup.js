@@ -10,10 +10,13 @@ var config = {
 };
 firebase.initializeApp(config);
 
+ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia    ||
+  null;
+
 if(window.ar == 'true'){
- var video = document.querySelector('#camera-stream');
  navigator.mediaDevices.getUserMedia({ video : { facingMode: "environment" }})
   .then(function(stream) {
+   var video = document.querySelector('#camera-stream');
    video.srcObject = stream;
    video.onloadedmetadata = function(e) {
     video.play();
