@@ -120,7 +120,9 @@ var SceneVue = new Vue({
         var elIntersected = e.detail.els[0];
         $('a-scene').off('click');
         $('a-scene').click(function() {
-          self.currentItem = parseInt(elIntersected.id);
+          if (!!elIntersected.id) {
+            self.currentItem = parseInt(elIntersected.id);
+          }
         });
       });
 
