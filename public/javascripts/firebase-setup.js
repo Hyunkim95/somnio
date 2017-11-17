@@ -22,7 +22,8 @@ var SceneVue = new Vue({
         items: [],
         currentItem: '',
         category: '',
-        attribute: ''
+        attribute: '',
+        environment: ''
     },
     methods: {
       saveScene: function() {
@@ -90,6 +91,9 @@ var SceneVue = new Vue({
       },
       getModel: function(item) {
         return '/models/' + item.model + '/scene.gltf';
+      },
+      setEnvironment: function(environment) {
+       this.environment = 'preset:' + environment
       }
     },
     created: function() {
