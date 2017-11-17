@@ -106,8 +106,9 @@ var SceneVue = new Vue({
         }
         return item.rotation.x + " " + item.rotation.y + " " + item.rotation.z;
       },
-      getModel: function(item) {
-        return '/models/categories/' + item.model + '/scene.gltf';
+      getModel: function(category, item, ext) {
+        console.log("HEHELOOL" + item)
+        return '/models/categories/' + category + '/' + item.model + '/' + item.model + ext
       },
       setEnvironment: function(environment) {
        this.items.environment = 'preset:' + environment
@@ -169,6 +170,7 @@ var SceneVue = new Vue({
       var self = this;
       // Clicking on an object
       $('a-scene').on('raycaster-intersection', function(e) {
+        document.querySelector('[raycaster]').components.raycaster.refreshObjects();
         var elIntersected = e.detail.els[0];
         $('a-scene').off('click');
         $('a-scene').click(function() {
