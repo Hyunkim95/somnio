@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Lato';
+}
+.nav {
+  background: #000;
+  text-align: center;
+}
+.nav li {
+  display: inline-block;
+}
+.nav a {
+  display: inline-block;
+  padding: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+.nav a:hover {
+  background-color: #3ab795;
+  text-decoration: underline;
+}
+.main-content {
+  margin: 50px auto;
+  max-width: 600px;
+}
+.main-content p {
+  line-height: 1.6;
+  margin-bottom: 1.7em;
+}
+.footer {
+  margin: 50px auto;
+  max-width: 600px;
+  border-top: 1px solid #444;
+  padding: 20px 0;
+}
+.footer p {
+  color: #444;
+  font-size: 12px;
+}
+#cover {
+  width: 100%;
+  height: 100%;
+}
+#scene {
+  background-color: transparent;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+#scene .a-canvas {
+  height: 100% !important;
+  width: 100% !important;
+}
+.edit .a-enter-vr.embedded {
+  display: none;
+}
+#camera-stream {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#dial {
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+  bottom: 0;
+  border-radius: 50px;
+  left: calc(50% - 50px);
+  opacity: 0.4;
+  position: absolute;
+  z-index: 2;
+}
+.overlay-element {
+  z-index: 2;
+}
+.sliders {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 300;
+  background-color: rgba(0,0,0,0.5);
+}
+.buttons {
+  overflow: auto;
+  white-space: nowrap;
+}
+button {
+  text-transform: uppercase;
+  padding: 30px;
+  background: none;
+  border: none;
+  -webkit-filter: invert(100%);
+}
+button:hover {
+  background-color: rgba(250,250,250,0.5) !important;
+}
+button#dimensions {
+  background: url("/img/cube.svg") no-repeat center 7px;
+}
+button#position {
+  background: url("/img/position.svg") no-repeat center 8px;
+  background-size: 55px 55px;
+}
+button#rotation {
+  background: url("/img/rotate.svg") no-repeat center 10px;
+  background-size: 50px 50px;
+}
+button#scale {
+  background: url("/img/scale.svg") no-repeat center 9px;
+  background-size: 43px;
+}
+button#save {
+  background: url("/img/save.svg") no-repeat center 7px;
+}
+button#delete {
+  background: url("/img/delete.svg") no-repeat center 7px;
+}
+.attributes button {
+  padding: 10px 30px;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 20px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #c7c7c7;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #fff;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #c7c7c7;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2.4px;
+  cursor: pointer;
+  box-shadow: 0.9px 0.9px 1.7px rgba(0,0,0,0), 0px 0px 0.9px rgba(13,13,13,0);
+  background: #fff;
+  border-radius: 4.1px;
+  border: 0px solid rgba(0,0,1,0);
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 2.6px 2.6px 3.7px rgba(0,0,0,0), 0px 0px 2.6px rgba(13,13,13,0);
+  border: 1px solid rgba(0,0,0,0);
+  height: 20px;
+  width: 20px;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -9.3px;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 2.4px;
+  cursor: pointer;
+  box-shadow: 0.9px 0.9px 1.7px rgba(0,0,0,0), 0px 0px 0.9px rgba(13,13,13,0);
+  background: #fff;
+  border-radius: 4.1px;
+  border: 0px solid rgba(0,0,1,0);
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 2.6px 2.6px 3.7px rgba(0,0,0,0), 0px 0px 2.6px rgba(13,13,13,0);
+  border: 1px solid rgba(0,0,0,0);
+  height: 20px;
+  width: 20px;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 2.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #fff;
+  border: 0px solid rgba(0,0,1,0);
+  border-radius: 8.2px;
+  box-shadow: 0.9px 0.9px 1.7px rgba(0,0,0,0), 0px 0px 0.9px rgba(13,13,13,0);
+}
+input[type=range]::-ms-fill-upper {
+  background: #fff;
+  border: 0px solid rgba(0,0,1,0);
+  border-radius: 8.2px;
+  box-shadow: 0.9px 0.9px 1.7px rgba(0,0,0,0), 0px 0px 0.9px rgba(13,13,13,0);
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 2.6px 2.6px 3.7px rgba(0,0,0,0), 0px 0px 2.6px rgba(13,13,13,0);
+  border: 1px solid rgba(0,0,0,0);
+  height: 20px;
+  width: 20px;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  height: 2.4px;
+}
