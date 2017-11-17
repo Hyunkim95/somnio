@@ -107,7 +107,6 @@ var SceneVue = new Vue({
         return item.rotation.x + " " + item.rotation.y + " " + item.rotation.z;
       },
       getModel: function(category, item, ext) {
-        console.log("HEHELOOL" + item)
         return '/models/categories/' + category + '/' + item.model + '/' + item.model + ext
       },
       setEnvironment: function(environment) {
