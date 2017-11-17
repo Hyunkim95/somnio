@@ -111,6 +111,9 @@ var SceneVue = new Vue({
       },
       setEnvironment: function(environment) {
        this.items.environment = 'preset:' + environment
+      },
+      getEnvThumbnail: function(environment) {
+        return 'background-image: url(/models/environments/' + environment[0] + '.png)'
       }
     },
     created: function() {
@@ -139,6 +142,10 @@ var SceneVue = new Vue({
         $('a-scene').click(function() {
           if (!!elIntersected.id) {
             self.currentItem = parseInt(elIntersected.id);
+          } else {
+            self.currentItem = '';
+            self.category = '';
+            self.attribute = '';
           }
         });
       });

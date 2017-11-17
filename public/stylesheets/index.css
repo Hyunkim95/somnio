@@ -78,6 +78,12 @@ body {
   font-weight: 300;
   background-color: rgba(0,0,0,0.5);
 }
+.rows > .items {
+  height: 100px;
+  width: 100%;
+  background-size: 100%;
+  margin-bottom: 10px;
+}
 .buttons {
   overflow: auto;
   white-space: nowrap;
@@ -130,6 +136,9 @@ button#delete {
 }
 button#delete[disabled] {
   background: url("/img/delete-disabled.svg") no-repeat center;
+}
+button#environment {
+  background: url("/img/environment.svg") no-repeat center;
 }
 button#home {
   background: url("/img/home.svg") no-repeat center;
@@ -197,9 +206,10 @@ button.selected {
   top: 0;
   left: 90px;
   padding: 20px;
+  overflow-y: auto;
 }
 
-.sidebar #attribute-box label, 
+.sidebar #attribute-box label,
 .sidebar #attribute-box span{
   color: white;
 }
