@@ -107,7 +107,7 @@ var SceneVue = new Vue({
 
       database.on("value", function(snapshot) {
          var data = snapshot.val();
-         self.items = data.items
+         self.items = data
       }, function (error) {
          console.log("Error: " + error.code);
       });
