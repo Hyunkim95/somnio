@@ -33,37 +33,37 @@ block content
           button#dimensions(v-on:click='setCategory("dimensions")', v-bind:disabled='currentItem === ""') Stretch
           button#position(v-on:click='setCategory("position")', v-bind:disabled='currentItem === ""') Move
           button#rotation(v-on:click='setCategory("rotation")', v-bind:disabled='currentItem === ""') Rotate
-          div#attribute-box(v-if='category !== "" && category !== null && currentItem !== ""')
+          div#attribute-box(v-if='!!category && currentItem !== ""')
             div(v-if='category === "position"')
               label(for='position-x') X axis
-              span {{ items[currentItem].position.x }}
-              input#position-x(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.x")
+              span {{ items.items[currentItem].position.x }}
+              input#position-x(type="range",min="-25",max="25",step="0.1", v-model.number="items.items[currentItem].position.x")
               label(for='position-x') Y axis
-              span {{ items[currentItem].position.y }}
-              input#position-y(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.y")
+              span {{ items.items[currentItem].position.y }}
+              input#position-y(type="range",min="-25",max="25",step="0.1", v-model.number="items.items[currentItem].position.y")
               label(for='position-x') Z axis
-              span {{ items[currentItem].position.z }}
-              input#position-z(type="range",min="-25",max="25",step="0.1", v-model.number="items[currentItem].position.z")
+              span {{ items.items[currentItem].position.z }}
+              input#position-z(type="range",min="-25",max="25",step="0.1", v-model.number="items.items[currentItem].position.z")
             div(v-if='category === "rotation"')
               label(for='rotation-x') X axis
-              span {{ items[currentItem].rotation.x }}°
-              input#rotation-x(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.x")
+              span {{ items.items[currentItem].rotation.x }}°
+              input#rotation-x(type="range",min="-360",max="360",step="1", v-model.number="items.items[currentItem].rotation.x")
               label(for='rotation-x') Y axis
-              span {{ items[currentItem].rotation.y }}°
-              input#rotation-y(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.y")
+              span {{ items.items[currentItem].rotation.y }}°
+              input#rotation-y(type="range",min="-360",max="360",step="1", v-model.number="items.items[currentItem].rotation.y")
               label(for='rotation-x') Z axis
-              span {{ items[currentItem].rotation.z }}°
-              input#rotation-z(type="range",min="-360",max="360",step="1", v-model.number="items[currentItem].rotation.z")
+              span {{ items.items[currentItem].rotation.z }}°
+              input#rotation-z(type="range",min="-360",max="360",step="1", v-model.number="items.items[currentItem].rotation.z")
             div(v-if='category === "dimensions"')
               label(for='scale-x') X axis
-              span {{ items[currentItem].scale.x }}
-              input#scale-x(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.x")
+              span {{ items.items[currentItem].scale.x }}
+              input#scale-x(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].scale.x")
               label(for='scale-y') Y axis
-              span {{ items[currentItem].scale.y }}
-              input#scale-y(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.y")
+              span {{ items.items[currentItem].scale.y }}
+              input#scale-y(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].scale.y")
               label(for='scale-z') Z axis
-              span {{ items[currentItem].scale.z }}
-              input#scale-z(type="range",min="0",max="25",step="0.1", v-model.number="items[currentItem].scale.z")
+              span {{ items.items[currentItem].scale.z }}
+              input#scale-z(type="range",min="0",max="25",step="0.1", v-model.number="items.items[currentItem].scale.z")
         div.sliders.overlay-element.mobile
           div.input-slider
             template(v-if='currentItem !== "" && currentItem !== null')

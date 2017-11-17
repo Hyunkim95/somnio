@@ -46,7 +46,7 @@ var SceneVue = new Vue({
       },
       removeCurrentObject: function() {
         if(this.currentItem !== "" && this.currentItem !== null){
-          this.items.splice(this.currentItem, 1);
+          this.items.items.splice(this.currentItem, 1);
           this.currentItem = '';
         }
       },
