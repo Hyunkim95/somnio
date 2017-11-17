@@ -12,8 +12,7 @@ var config = {
 firebase.initializeApp(config);
 
 // App name
-// var appName = window.appId;
-var appName = "app0"
+var appName = window.id;
 
 // Get a reference to the database service
 var database = firebase.database().ref(appName);
