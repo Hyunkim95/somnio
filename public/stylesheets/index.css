@@ -228,6 +228,12 @@ button.selected {
   background: #104f55;
   width: 100vw;
 }
+
+.navbar button {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  position: absolute;
+}
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;

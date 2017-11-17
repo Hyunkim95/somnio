@@ -121,7 +121,6 @@ var SceneVue = new Vue({
         return item.rotation.x + " " + item.rotation.y + " " + item.rotation.z;
       },
       getModel: function(category, item, ext) {
-        console.log("HEHELOOL" + item)
         return '/models/categories/' + category + '/' + item.model + '/' + item.model + ext
       },
       setEnvironment: function(environment) {
@@ -217,6 +216,18 @@ var SceneVue = new Vue({
       $('.sidebar button').click(function() {
         $(this).siblings().removeClass('selected');
         $(this).addClass('selected');
+      });
+
+     var video = document.querySelector('#camera-stream');
+     navigator.mediaDevices.getUserMedia({ video : { facingMode: "environment" }})
+      .then(function(stream) {
+       video.srcObject = stream;
+       video.onloadedmetadata = function(e) {
+        video.play();
+       };
+      })
+      .catch(function(err) {
+       console.log('The following error occurred when trying to use getUserMedia: ' + err);
       });
 
       window.camera = document.querySelector('[camera]').object3D
