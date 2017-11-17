@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 
  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia    ||
   null;
-
+ 
 // if(window.ar == 'true'){
 //  navigator.getUserMedia({ video: { facingMode: { exact: "environment" } } }
 //   .then(function(stream) {
@@ -41,7 +41,6 @@ firebase.initializeApp(config);
       }
     )
  }
-
 
 // App name
 var appName = window.id;
