@@ -22,7 +22,25 @@ var SceneVue = new Vue({
         items: {items: [], environment: ''},
         currentItem: '',
         category: '',
-        attribute: ''
+        attribute: '',
+        environmentArray: [
+          ["arches", "Arches"],
+          ["checkerboard", "Checkboard"],
+          ["contact", "Contact"],
+          ["default", "Default"],
+          ["egypt", "Egypt"],
+          ["forest", "Forest"],
+          ["goaland", "Goaland"],
+          ["goldmine", "Goldmine"],
+          ["japan", "Japan"],
+          ["osiris", "Osiris"],
+          ["poison", "Poision"],
+          ["starry", "Starry"],
+          ["threetowers", "Three Towers"],
+          ["tron", "Tron"],
+          ["volcano", "Volcano"],
+          ["yavapai", "Yavapai"],
+        ]
     },
     methods: {
       saveScene: function() {
