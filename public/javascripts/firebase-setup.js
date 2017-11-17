@@ -107,7 +107,7 @@ var SceneVue = new Vue({
         return item.rotation.x + " " + item.rotation.y + " " + item.rotation.z;
       },
       getModel: function(item) {
-        return '/models/' + item.model + '/scene.gltf';
+        return '/models/categories/' + item.model + '/scene.gltf';
       },
       setEnvironment: function(environment) {
        this.items.environment = 'preset:' + environment
