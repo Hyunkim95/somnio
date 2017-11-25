@@ -235,6 +235,9 @@ var SceneVue = new Vue({
         $(this).addClass('selected');
       });
 
+      var sceneEl = document.querySelector('a-scene');
+      sceneEl.components.inspector.remove();
+
       window.camera = document.querySelector('[camera]').object3D
     }
 });
